@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- app/code/local/Summa/Catalog/etc/config.xml -->
+
+<config>
+    <modules>
+        <Summa_Catalog>
+            <version>0.1.1</version>
+        </Summa_Catalog>
+    </modules>
+
+    <global>
+        <blocks>
+            <summa_catalog> <!-- This is a class group -->
+                <class>Summa_Catalog_Block</class>
+                <!-- This is a path to these object types -->
+            </summa_catalog>
+        </blocks>
+        <helpers>
+            <summa_catalog>
+                <class>Summa_Catalog_Helper</class>
+            </summa_catalog>
+        </helpers>
+        <models>
+            <summa_catalog>
+                <class>Summa_Catalog_Model</class>
+            </summa_catalog>
+        </models>
+
+        <resources>
+            <summa_catalog_setup><!-- namespace_module_setup becomes folder under sql dir -->
+                <setup>
+                    <module>Summa_Catalog</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </summa_catalog_setup>
+        </resources>
+    </global>
+
+    <!-- Need to register frontend routers -->
+    <frontend>
+        <routers>
+            <summa_catalog> <!-- Unique namespace -->
+                <use>standard</use>
+                <args>
+                    <module>Summa_Catalog</module>
+                    <!-- This will match the /app/etc/modules/Day_Two.xml configuration -->
+                    <frontName>summa</frontName>
+                </args>
+            </summa_catalog>
+        </routers>
+
+        <layout>
+            <updates>
+                <summa_catalog_layout> <!-- Unique node name  -->
+                    <!-- This file would be under /design/frontend/base/default/layout/summa/catalog/summa.xml -->
+                    <file>summa/catalog/summa.xml</file>
+                </summa_catalog_layout>
+            </updates>
+        </layout>
+    </frontend>
+</config>

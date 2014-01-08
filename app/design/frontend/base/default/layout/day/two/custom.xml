@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- app/code/local/Day/Two/etc/config.xml -->
+
+<layout>
+    <catalog_product_view>
+        <reference name="content">
+            <!-- We are referencing the content block which is defined
+              in another default node.
+            We are basically saying: take our block instructions and add those to that,
+            basically make our block a child of content block.
+            Any block that is added to the content block will be rendered.
+            And if some text is passed to that, then the block will render -->
+            <block type="core/text" name="oops">
+                <action method="setText">
+                    <args>This is some text</args>
+                </action>
+            </block>
+        </reference>
+
+        <!--
+        Inside this node we can have: reference, block, update, remove
+
+        <block type='core/template'>
+                name='some.string'
+                as= 'alias.string' [used only in the context of a parent block]
+                parent='name.of.some.other.block'
+                template='some.file.phtml[path inside template theme]'
+                output='toHtml'
+            <action method='block method name'>
+                    translate='atribute used for method arguments translation'
+                    module='value for this attribute will be module name which we want to translate'
+                    helper='helper name with hel[er method'
+                    json='json values which need to be decoded. This will be passed to the block method'
+                    ifconfig='allows to check a configuration flag value in order to allow or deny the action processing'
+
+        </block>
+
+        <block type='page/html_head'>
+            <action method='method.name'
+            Note: this method name simple calls a method that is defined this block class
+
+        <reference name='[name_of_the_block_which_we_need_to_reference]' ..>
+
+        <update handle='lll'>
+
+        <remove name=[name_of_the_block_which_we_need_to_reference]>
+
+        -->
+    </catalog_product_view>
+
+
+    <!-- Any node under layout is a Layout handler. Se va a ejecutar SOLO en ese controlador Day/Two/indexController -->
+    <day_two_index_handle>
+        <!-- this connects a template with a block class -->
+        <block type="core/template"
+               name="some.name"
+               output="toHtml"
+               template="some/template.phtml">
+               <block type="core/text" name="some.otherBlock">
+                   <!-- setText is a method that is defined in the core/text class which will pass de args-->
+                   <action method="setText">
+                       <args>Some text for us!</args>
+                   </action>
+               </block>
+        </block>
+    </day_two_index_handle>
+</layout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <menu>
+        <!-- si pusiste translate="title", eso le dice que va a traducir el titulo automaticamente...
+         si ademas le pusiste module="summa_brand",  eso le dice que para traducirlo va a usar el "__" del Helper del modulo summa_brand
+         o sea va a usar Mage::helper('summa_brand'), por lo tanto tenes que tener un Data.php adentro de la carpeta Helper (y el <helpers> en el config.xml)
+        -->
+        <summa_brand translate="title" module="summa_brand">
+            <title>Brands</title>
+            <sort_order>15</sort_order>
+            <children>
+                <!-- Here, I like to use the namespacename_modulename_controllername naming convention -->
+                <summa_brand_index translate="title" module="summa_brand">
+                    <title>Manage Brands</title>
+                    <sort_order>1</sort_order>
+                    <!-- This is the URL of what we want the menu item to link to -->
+                    <action>adminhtml/brand</action>
+                </summa_brand_index>
+
+                <summa_brand_test translate="title" module="summa_brand">
+                    <title>Update Price of Configurable Product</title>
+                    <sort_order>2</sort_order>
+                    <!-- This is the URL of what we want the menu item to link to -->
+                    <action>adminhtml/brand/testProductPrice</action>
+                </summa_brand_test>
+            </children>
+
+        </summa_brand>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <!-- Same as above, but instead of referencing the config/menu node, you reference the acl/resources node of adminhtml.xml -->
+                    <summa_brand translate="title" module="summa_brand">
+                        <title>Brands</title>
+                        <sort_order>15</sort_order>
+                        <children>
+                            <!-- Keep the same naming convention as above -->
+                            <summa_brand_index>
+                                <!-- This is how the ACL text will be displayed on System > Permissions > Roles > Role > Role Resources -->
+                                <title>Brands</title>
+                            </summa_brand_index>
+
+                            <summa_brand_test>
+                                <!-- This is how the ACL text will be displayed on System > Permissions > Roles > Role > Role Resources -->
+                                <title>Update Price of Configurable Product</title>
+                            </summa_brand_test>
+                        </children>
+                    </summa_brand>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

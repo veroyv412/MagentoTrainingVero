@@ -1,0 +1,119 @@
+<!--
+	The tabs-system is developed by Trollweb.no/Silverthemes.com.
+	Please do not re-distribute without prior permission and do not remove this text.
+    Visit www.trollweb.no or www.silverthemes.com for more details.
+-->
+
+<script type="text/javascript" language="javascript">
+	function makeMeInvisible() {
+	document.getElementById("tab_id1").style.display = "none";
+	document.getElementById("tab_id2").style.display = "none";
+	document.getElementById("tab_id3").style.display = "none";
+	document.getElementById("tab_id4").style.display = "none";
+	document.getElementById("tab_id5").style.display = "none";
+
+	var element = document.getElementById("trollweb_1");
+	element.setAttribute("class", "passive"); //For Most Browsers
+	element.setAttribute("className", "passive"); //For IE; harmless to other browsers.
+
+	var element = document.getElementById("trollweb_2");
+	element.setAttribute("class", "passive"); //For Most Browsers
+	element.setAttribute("className", "passive"); //For IE; harmless to other browsers.
+
+	var element = document.getElementById("trollweb_3");
+	element.setAttribute("class", "passive"); //For Most Browsers
+	element.setAttribute("className", "passive"); //For IE; harmless to other browsers.
+
+	var element = document.getElementById("trollweb_4");
+	element.setAttribute("class", "passive"); //For Most Browsers
+	element.setAttribute("className", "passive"); //For IE; harmless to other browsers.
+	
+	var element = document.getElementById("trollweb_5");
+	element.setAttribute("class", "passive"); //For Most Browsers
+	element.setAttribute("className", "passive"); //For IE; harmless to other browsers.
+
+};
+	function trollweb_tabs(tab_id) {
+	makeMeInvisible();
+ 	document.getElementById("tab_id" + tab_id).style.display = "block";
+	var element = document.getElementById("trollweb_" + tab_id);
+	element.setAttribute("class", "active"); //For Most Browsers
+	element.setAttribute("className", "active"); //For IE; harmless to other browsers.
+
+};
+	
+</script>
+
+<ul class="subsection_tabs" id="tab_group_one" style="clear:none;">
+    <?php if ($this->getChildHtml('description')==NULL) { echo '<div id="trollweb_1"></div>'; } else echo('
+    <li class="tab"><a href="javascript:void(0);" id="trollweb_1" onClick="trollweb_tabs(1)" class="active"><h4>' . $this->__('Product Description'). '</h4></a></li> '); ?>
+    
+    <?php if ($this->getChildHtml('additional')==NULL) { echo '<div id="trollweb_2"></div>'; } else echo('
+    <li class="tab"><a href="javascript:void(0);" id="trollweb_2" onClick="trollweb_tabs(2)" ><h4>More details</h4></a></li> '); ?>
+	
+	<?php 
+	// Replace the line below with the text More details three lines above to get multilingual page
+	//' . $this->__('Additional Information') . ' ?>
+    
+    <?php if ($this->getChildHtml('upsell_products')==NULL) { echo '<div id="trollweb_3"></div>'; } else echo('
+    <li class="tab"><a href="javascript:void(0);" id="trollweb_3" onClick="trollweb_tabs(3)" ><h4>' . $this->__('We Also Recommend') . '</h4></a></li> '); ?>
+    
+    <?php if ($this->getChildHtml('product_additional_data')==NULL) { echo '<div id="trollweb_4"></div>'; } else echo('
+	<li class="tab"><a href="javascript:void(0);" id="trollweb_4" onClick="trollweb_tabs(4)" ><h4>' .  $this->__('Product Tags') . '</h4></a></li> '); ?>
+    
+    <?php if ($this->getChildHtml('product_additional_data_review')==NULL) { echo '<div id="trollweb_5"></div>'; } else echo('
+	<li class="tab"><a href="javascript:void(0);" id="trollweb_5" onClick="trollweb_tabs(5)" ><h4>' .  $this->__('Product Reviews') . '</h4></a></li> '); ?>
+</ul>
+
+<div class="product-collateral">
+
+<div id="tab_id1">
+<?php $_description = $this->getChildHtml('description')?>
+        <p>
+            <div class="collateral-box">
+                <div class="head">
+                    <h4><?php echo $this->__('Product Description') ?></h4>
+                </div>
+                <?php echo $_description ?>
+            </div>
+        </p>
+    </div>
+
+<?php $_additional = $this->getChildHtml('additional')?>
+    <div id="tab_id2" style="display:none;">
+    	<p>
+            <div class="collateral-box">
+                <div class="head">
+                    <h4><?php echo $this->__('Additional Information') ?></h4>
+                </div>
+				<?php echo ($_additional); ?>
+            </div>
+        </p>
+    </div> 
+
+    <div id="tab_id3" style="display:none;">
+    	<p>
+            <div class="collateral-box">
+                <?php echo $this->getChildHtml('upsell_products') ?>
+            </div>
+        </p>
+    </div>
+
+    <div id="tab_id4" style="display:none;">
+    	<p>
+            <div class="collateral-box">
+                <?php echo $this->getChildHtml('product_additional_data') ?>
+            </div>
+        </p>
+    </div>
+
+    <div id="tab_id5" style="display:none;">
+    	<p>
+            <div class="collateral-box">
+                <?php echo $this->getChildHtml('product_additional_data_review') ?>
+                <?php echo $this->getChildHtml('review_form') ?>
+            </div>
+        </p>
+    </div>
+    
+</div>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- app/code/local/Foo/Bar/etc/config.xml -->
+
+<config>
+    <modules>
+        <Foo_Bar>
+            <version>1.0</version>
+        </Foo_Bar>
+    </modules>
+    <frontend> <!-- it would be <admin> if we want a routing in the admin -->
+        <routers>
+            <foo_bar> <!-- just need to be unique -->
+                <use>standard</use> <!-- in admin we will use 'admin' -->
+                <args>
+                    <module>Foo_Bar</module>
+                    <!-- Should match the exact same name that the module config created at app/etc/modules/Foo_Bar.xml -->
+                    <frontName>foo</frontName>
+                    <!-- frontName=How we get to our route via the browser, via some URL   -->
+                    <!-- site.com/foo = this will match index controller and index action -->
+                    <!-- The system NEEDS to map a frontname given after site.com/foo, for example, and
+                    will look for a Path given in MODULE tag. In this case is: FOO_BAR which equals
+                    to Foo/Bar -->
+                </args>
+            </foo_bar>
+            <catalog>
+                <args>
+                    <modules>
+                        <!-- Here we are trying to intercept Catalog[frontName]/Category[controller]/view[action] BEFORE it loads with our definition -->
+                        <!-- HINT: CTRL+U in the webpage to see HTML code and look for BODY tag this will print:
+                        body class=" catalog-category-view categorypath-furniture-bedroom-html category-bedroom"
+                        so we know its on catalog frontname category controller and view action-->
+
+                        <!-- We  have to use 'before' if we want to change an existing route -->
+                        <!-- Foo_Bar will map to Foo/Bar/controllers -->
+                        <!-- Foo_Bar_Catalog is a Path -->
+                        <!-- foo_bar before="Mage_Catalog">Foo_Bar_Catalog</foo_bar-->
+                    </modules>
+                </args>
+            </catalog>
+        </routers>
+    </frontend>
+
+    <global>
+        <models>
+            <foo_bar>
+                <class>Foo_Bar_Model</class>
+            </foo_bar>
+        </models>
+    </global>
+</config>

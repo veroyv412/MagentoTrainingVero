@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Tomado de: http://markshust.com/2012/07/05/creating-magento-adminhtml-grids-simplified -->
+
+<config>
+    <modules>
+        <Summa_Brand>
+            <version>0.1.1</version>
+        </Summa_Brand>
+    </modules>
+
+    <global>
+        <helpers>
+            <summa_brand>
+                <!-- This is where we define our helper directory -->
+                <class>Summa_Brand_Helper</class>
+            </summa_brand>
+        </helpers>
+
+        <blocks>
+            <summa_brand>
+                <!-- Set a block definition and lookup directory -->
+                <class>Summa_Brand_Block</class>
+            </summa_brand>
+        </blocks>
+
+        <models>
+            <summa_brand>
+                <!-- This is where we define our model directory -->
+                <class>Summa_Brand_Model</class>
+                <!-- Define a resource to create a custom table -->
+                <resourceModel>summa_brand_resource</resourceModel>
+            </summa_brand>
+
+            <!-- Here's our resource model we'll use to create a database table -->
+            <summa_brand_resource>
+                <class>Summa_Brand_Model_Resource</class>
+                <entities>
+                    <!-- Let's define our table, we'll call it with the brand name, but the real table is summa_brand -->
+                    <!-- After we define our entity, we can call it with our model by calling summa_brand/brand -->
+                    <brand>
+                        <table>summa_brand</table>
+                    </brand>
+                </entities>
+            </summa_brand_resource>
+        </models>
+
+        <!-- And finally we define our resource setup script -->
+        <resources>
+            <summa_brand_setup>
+                <setup>
+                    <module>Summa_Brand</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </summa_brand_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Summa_Brand before="Mage_Adminhtml">Summa_Brand_Adminhtml</Summa_Brand>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <summa_brand>
+                    <!--
+                    We again keep a nice naming convention and make our module upgrade proof by placing it in a separate folder
+                    - Since we are in the adminhtml node, this will look for the XML file in the app/design/adminhtml/default/default root folder
+                    -->
+                    <file>summa/brand/brand.xml</file>
+                </summa_brand>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

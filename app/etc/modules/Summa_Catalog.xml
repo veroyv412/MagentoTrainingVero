@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- app/etc/modules/Summa.xml -->
+
+<config>
+    <modules>
+        <Summa_Catalog>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Log />
+            </depends>
+        </Summa_Catalog>
+    </modules>
+</config>

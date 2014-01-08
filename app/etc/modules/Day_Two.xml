@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- app/etc/modules/Day_Two.xml -->
+
+<config>
+    <modules>
+        <Day_Two>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Log />
+            </depends>
+        </Day_Two>
+    </modules>
+</config>

@@ -1,0 +1,19 @@
+
+
+.header {position: relative; background: url(../images/header.gif) top left repeat-x; height: 144px; border: 0;}
+
+#nav li {background: #1c0000;}
+#nav li li {background: #1c0000;}
+
+#nav li ul.level0 		{width: 180px; padding: 0 0 10px 20px;}
+#nav li ul.level0 li     {margin: 0; padding: 0;}
+#nav li ul.level0 li a 	{width: 180px; margin: 0; padding: 2px 0 2px 12px; }
+#nav li.over ul.level0 li a {margin: 0; padding: 2px 0 2px 12px; color: blue;}
+
+#nav li ul.level0 li.over a:hover {margin: 0; padding: 2px 0 2px 12px; color: blue;}
+
+#nav li ul li 		{width: 180px; margin: 0; padding: 0 0 0 20px;}
+#nav li ul li a 	{width: 180px; margin: 0; padding: 0 0 0 20px;}
+#nav li ul li ul li.over a:hover {margin: 0; padding: 0;}
+
+.footer-container     {background: none; border: 0px solid red; height: auto;}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- app/etc/modules/Foo_Bar.xml -->
+
+<config>
+    <modules>
+        <Foo_Bar> <!-- PATH to the 'local' directory inside app/code/ -->
+            <active>true</active>
+            <codePool>local</codePool> <!-- folder inside app/code -->
+        </Foo_Bar>
+    </modules>
+</config>

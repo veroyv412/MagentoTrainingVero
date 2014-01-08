@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- app/code/local/Summa/Shipping/etc/config.xml -->
+
+<config>
+    <modules>
+        <Summa_Shipping>
+            <version>0.1.0</version>
+        </Summa_Shipping>
+    </modules>
+</config>

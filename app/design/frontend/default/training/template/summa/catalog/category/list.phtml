@@ -1,0 +1,10 @@
+<?php $_categories = $this->getCategories() ?>
+
+<div>
+    <div><b>Nombre de las categorias</b></div>
+    <?php  foreach($_categories as $_category){ ?>
+    <div>
+        <?php echo $_category->getName();?>
+    </div>
+    <?php }?>
+</div>
