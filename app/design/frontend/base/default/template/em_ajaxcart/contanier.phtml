@@ -1,0 +1,17 @@
+<div id="containerDiv" style="display:none">	
+		<div class="ajaxcart">
+			<img class='ajax_loading' id="ajax_loading" src='<?php echo $this->getSkinUrl('images/em_ajaxcart/loading.gif')?>' alt="" />
+			<div id="ajaxcart_conent" style="display:none">
+				<div class="ajaxcart_row1 row1" >					
+					<div id="ajax_image"></div>
+				</div>
+				<div class="row2">
+					<a href="javascript:void(0);" id="closeLink" class="back"><span><?php echo Mage::helper('checkout')->__('Continue Shopping')?></span></a>
+					<a href="<?php echo $this->getUrl('checkout/cart')?>" class="next"><span><?php echo Mage::helper('checkout')->__('View cart &amp; checkout')?></span></a>	</div>	
+				</div>
+		</div>
+	</div>
+<input type="hidden" id="ajax_base_url" value="<?php echo Mage::getBaseUrl();?>"/>	
+<div id="ajax_content" style="display:none">
+	<?php echo $this->getMessagesBlock()->getGroupedHtml()?>
+</div>

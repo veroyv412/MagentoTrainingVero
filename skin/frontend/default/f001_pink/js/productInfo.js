@@ -3,12 +3,12 @@ ProductInfo.prototype = {
     settings: {
         'loadingMessage': 'Please wait ...'
     },
-
+    
     initialize: function(selector, x_image, settings)
     {
         Object.extend(this.settings, settings);
-        this.createWindow();
-
+        this.createWindow();  
+        
         var that = this;
         $$(selector).each(function(el, index){
             el.observe('click', that.loadInfo.bind(that));
@@ -17,9 +17,9 @@ ProductInfo.prototype = {
             el.observe('mouseover', that.showButton);
             el.observe('mouseout', that.hideButton);
         })
-
+        
     },
-
+    
     createLoader: function()
     {
         var loader = new Element('div', {id: 'ajax-preloader'});
@@ -31,44 +31,42 @@ ProductInfo.prototype = {
             left:  document.body.clientWidth/2 - 75 + 'px'
         });
     },
-
+    
     destroyLoader: function()
     {
         $('ajax-preloader').remove();
     },
-
+    
     showButton: function(e)
     {
         el = this;
         while (el.tagName != 'P') {
             el = el.up();
         }
-        var btn = $(el).getElementsBySelector('.ajax')[0];
-        btn && btn.setStyle({
+        $(el).getElementsBySelector('.ajax')[0].setStyle({
             display: 'block'
         })
     },
-
+    
     hideButton: function(e)
     {
         el = this;
         while (el.tagName != 'P') {
             el = el.up();
         }
-        var btn = $(el).getElementsBySelector('.ajax')[0];
-        btn && btn.setStyle({
+        $(el).getElementsBySelector('.ajax')[0].setStyle({
             display: 'none'
         })
     },
-
+    
     createWindow: function()
     {
         var qWindow = new Element('div', {id: 'quick-window'});
         qWindow.innerHTML = '<div id="quickview-header"><a href="javascript:void(0)" id="quickview-close"></a></div><div class="quick-view-content"></div>';
         document.body.appendChild(qWindow);
-        $('quickview-close').observe('click', this.hideWindow.bind(this));
+        $('quickview-close').observe('click', this.hideWindow.bind(this)); 
     },
-
+    
     showWindow: function()
     {
         $('quick-window').setStyle({
@@ -77,17 +75,17 @@ ProductInfo.prototype = {
             display: 'block'
         });
     },
-
+    
     setContent: function(content)
     {
         $$('.quick-view-content')[0].insert(content);
     },
-
+    
     clearContent: function()
     {
         $$('.quick-view-content')[0].replace('<div class="quick-view-content"></div>');
     },
-
+    
     hideWindow: function()
     {
         this.clearContent();
@@ -96,10 +94,7 @@ ProductInfo.prototype = {
 
     loadInfo: function(e)
     {
-        if (typeof event != 'undefined') { // ie9 fix
-            event.preventDefault ? event.preventDefault() : event.returnValue = false;
-        }
-        Event.stop(e);
+        e.stop();
         var that = this;
         this.createLoader();
         new Ajax.Request(e.element().href, {
@@ -109,6 +104,6 @@ ProductInfo.prototype = {
                 that.destroyLoader();
                 that.showWindow();
             }
-        });
+        }); 
     }
 }

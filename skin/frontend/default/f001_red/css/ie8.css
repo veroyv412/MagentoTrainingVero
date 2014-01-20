@@ -11,6 +11,3 @@
 .mini-newsletter .form-button-alt span { background-position: 0 -227px; }
 .mini-newsletter .form-button-alt:hover { background-position: 100% -314px; }
 .mini-newsletter .form-button-alt:hover span { background-position: 0 -285px; }
-
-/*Search Autocomplete Misplase fix      for IE8*/
-#search_autocomplete { left: 25px !important; top: 27px !important;}

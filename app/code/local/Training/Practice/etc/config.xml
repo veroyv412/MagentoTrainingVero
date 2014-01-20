@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Tomado de: http://markshust.com/2012/07/05/creating-magento-adminhtml-grids-simplified -->
+
+<config>
+    <modules>
+        <Training_Practice>
+            <version>1.0</version>
+        </Training_Practice>
+    </modules>
+
+    <global>
+        <helpers>
+            <training_practice>
+                <!-- This is where we define our helper directory -->
+                <class>Training_Practice_Helper</class>
+            </training_practice>
+        </helpers>
+
+        <blocks>
+            <training_practice>
+                <!-- Set a block definition and lookup directory -->
+                <class>Training_Practice_Block</class>
+            </training_practice>
+        </blocks>
+
+        <models>
+            <training_practice>
+                <class>Training_Practice_Model</class>
+            </training_practice>
+
+            <catalog>
+                <rewrite>
+                    <product>Training_Practice_Model_Catalog_Product</product>
+                </rewrite>
+            </catalog>
+        </models>
+    </global>
+
+    <!-- Specify a default value for the system configuration option contacts/email/recipient_email  -->
+    <default>
+        <contacts>
+            <email>
+                <recipient_email>student@example.com</recipient_email>
+            </email>
+        </contacts>
+    </default>
+
+    <stores>
+        <french>
+            <contacts>
+                <email>
+                    <recipient_email>student2@example.com</recipient_email>
+                </email>
+            </contacts>
+        </french>
+    </stores>
+
+    <!-- This will change the Special Price in both: Frontend and Admin section (Manage Products -> product -> prices) -->
+    <global>
+        <events>
+            <catalog_product_load_after>
+                <observers>
+                    <training_practice>
+                        <type>model</type>
+                        <class>training_practice/observer</class>
+                        <method>catalogProductLoadAfter</method>
+                    </training_practice>
+                </observers>
+            </catalog_product_load_after>
+        </events>
+    </global>
+
+    <frontend>
+        <routers>
+            <training_routing>
+                <use>standard</use>
+                <args>
+                    <module>Training_Practice</module>
+                    <frontName>training</frontName>
+                </args>
+            </training_routing>
+
+            <customer>
+                <args>
+                    <modules>
+                        <training_routing before="Mage_Customer">Training_Practice_Customer</training_routing>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+    </frontend>
+</config>
+
+        <!-- Difference Observers vs Events -->
