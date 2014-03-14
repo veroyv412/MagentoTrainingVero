@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Training_Recap>
+            <version>1.0</version>
+        </Training_Recap>
+    </modules>
+
+    <global>
+        <models>
+            <training_recap>
+                <class>Training_Recap_Model</class>
+            </training_recap>
+        </models>
+        <blocks>
+            <training_recap>
+                <class>Training_Recap_Block</class>
+            </training_recap>
+        </blocks>
+        <helpers>
+            <training_recap>
+                <class>Training_Recap_Helper</class>
+            </training_recap>
+        </helpers>
+    </global>
+
+    <frontend>
+        <routers>
+            <training_recap>
+                <use>standard</use>
+                <args>
+                    <module>Training_Recap</module>
+                    <frontName>recap</frontName>
+                </args>
+            </training_recap>
+        </routers>
+    </frontend>
+</config>

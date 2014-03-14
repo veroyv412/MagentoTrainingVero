@@ -430,7 +430,19 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
         }
 
         if ($returnPathEmail !== null) {
-            $mailTransport = new Zend_Mail_Transport_Sendmail("-f".$returnPathEmail);
+            //$mailTransport = new Zend_Mail_Transport_Sendmail("-f".$returnPathEmail);
+
+            $config = array(
+                'host' => 'smtp.gmail.com',
+                'port' => 587,
+                'ssl' => 'tls',
+                'auth' => 'login',
+                'username' => 'veroyv412@gmail.com',
+                'password' => 'v3r0n1c4'
+            );
+
+            //$mailTransport = new Zend_Mail_Transport_Smtp(Mage::getStoreConfig('system/smtp/host'), $config);
+            $mailTransport = new Zend_Mail_Transport_Smtp("smtp.gmail.com", $config);
             Zend_Mail::setDefaultTransport($mailTransport);
         }
 

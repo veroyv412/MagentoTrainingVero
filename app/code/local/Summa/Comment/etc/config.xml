@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Tomado de: http://markshust.com/2012/07/05/creating-magento-adminhtml-grids-simplified -->
+
+<config>
+    <modules>
+        <Summa_Comment>
+            <version>0.1.0</version>
+        </Summa_Comment>
+    </modules>
+
+    <global>
+        <helpers>
+            <summa_comment>
+                <!-- This is where we define our helper directory -->
+                <class>Summa_Comment_Helper</class>
+            </summa_comment>
+        </helpers>
+
+        <blocks>
+            <summa_comment>
+                <!-- Set a block definition and lookup directory -->
+                <class>Summa_Comment_Block</class>
+            </summa_comment>
+        </blocks>
+
+        <models>
+            <summa_comment>
+                <!-- This is where we define our model directory -->
+                <class>Summa_Comment_Model</class>
+                <!-- Define a resource to create a custom table -->
+                <resourceModel>summa_comment_resource</resourceModel>
+            </summa_comment>
+
+            <!-- Here's our resource model we'll use to create a database table -->
+            <summa_comment_resource>
+                <class>Summa_Comment_Model_Resource</class>
+                <entities>
+                    <!-- Let's define our table, we'll call it with the brand name, but the real table is summa_brand -->
+                    <!-- After we define our entity, we can call it with our model by calling summa_brand/brand -->
+                    <comment>
+                        <table>summa_comment</table>
+                    </comment>
+                </entities>
+            </summa_comment_resource>
+        </models>
+
+        <!-- And finally we define our resource setup script -->
+        <resources>
+            <summa_comment_setup>
+                <setup>
+                    <module>Summa_Comment</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </summa_comment_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <routers>
+            <summa_comment>
+                <use>standard</use>
+                <args>
+                    <module>Summa_Comment</module>
+                    <frontName>comments</frontName> <!-- http://dev.local/whatever/*/* -->
+                </args>
+            </summa_comment>
+        </routers>
+    </frontend>
+
+</config>

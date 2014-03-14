@@ -22,6 +22,10 @@
                 <!-- Set a block definition and lookup directory -->
                 <class>Training_Practice_Block</class>
             </training_practice>
+
+            <rewrite>
+                <html_breadcrumbs>Training_Practice_Block_Page_Breadcrumbs</html_breadcrumbs>
+            </rewrite>
         </blocks>
 
         <models>
@@ -78,6 +82,14 @@
                 <args>
                     <module>Training_Practice</module>
                     <frontName>training</frontName>
+                </args>
+            </training_routing>
+
+            <training_routing>
+                <use>standard</use>
+                <args>
+                    <module>Training_Practice</module>
+                    <frontName>render</frontName>
                 </args>
             </training_routing>
 

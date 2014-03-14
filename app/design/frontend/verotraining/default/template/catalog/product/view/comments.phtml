@@ -1,0 +1,30 @@
+<br>
+    <h1>Comments</h1>
+<br>
+<form action="<?php echo Mage::getUrl('comments/comments', array('product_id' => Mage::registry('current_product')->getId() )); ?>" method="post" id="summa_comment">
+
+    <div class="input-box">
+        <textarea rows="10" cols="50" id="comment" name="comment" class="input-text required-entry"></textarea>
+        <input type="submit" value="Post">
+    </div>
+
+
+</form>
+
+<?php foreach ($this->getCommentList() as $key => $comment):?>
+    <div class="product-collateral">
+        <?php if (empty($comment['user_id'])):?>
+            <span><b>Anonymous</b></span>
+        <?php else: ?>
+            <span><b><?php echo $this->getUserName($comment['user_id'])?></b></span>
+        <?endif?>
+
+        <span><?php echo $comment['comment']?></span>
+
+        <div>Posted:
+            <span class="note">
+                <b><?php echo Mage::helper('core')->formatDate($comment['date'], 'medium', false)?></b>
+            </span>
+        </div>
+    </div>
+<?php endforeach;?>
