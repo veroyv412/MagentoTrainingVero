@@ -13,8 +13,11 @@ class Summa_Comment_Block_List extends Mage_Core_Block_Template
 
     function getCommentList()
     {
+        $current_product = Mage::registry('current_product');
+        $product_id = $current_product->getId();
+
         $collection = Mage::getResourceModel("summa_comment/comment_collection");
-        $comments = $collection->getData();
+        $comments = $collection->addFieldToFilter('product_id', $product_id)->load();
 
         return $comments;
     }

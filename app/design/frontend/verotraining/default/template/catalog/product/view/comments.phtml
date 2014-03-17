@@ -11,19 +11,22 @@
 
 </form>
 
-<?php foreach ($this->getCommentList() as $key => $comment):?>
+<?php foreach ($this->getCommentList() as $comment):?>
     <div class="product-collateral">
-        <?php if (empty($comment['user_id'])):?>
+        <?php
+            $user_id = $comment->getUserId();
+        ?>
+        <?php if (empty($user_id)):?>
             <span><b>Anonymous</b></span>
         <?php else: ?>
-            <span><b><?php echo $this->getUserName($comment['user_id'])?></b></span>
+            <span><b><?php echo $this->getUserName($user_id)?></b></span>
         <?endif?>
 
-        <span><?php echo $comment['comment']?></span>
+        <span><?php echo $comment->getComment()?></span>
 
         <div>Posted:
             <span class="note">
-                <b><?php echo Mage::helper('core')->formatDate($comment['date'], 'medium', false)?></b>
+                <b><?php echo Mage::helper('core')->formatDate($comment->getDate(), 'medium', false)?></b>
             </span>
         </div>
     </div>
