@@ -438,7 +438,7 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
                 'ssl' => 'tls',
                 'auth' => 'login',
                 'username' => 'veroyv412@gmail.com',
-                'password' => 'v3r0n1c4'
+                'password' => '********'
             );
 
             //$mailTransport = new Zend_Mail_Transport_Smtp(Mage::getStoreConfig('system/smtp/host'), $config);
